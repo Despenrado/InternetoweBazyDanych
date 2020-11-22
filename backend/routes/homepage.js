@@ -9,7 +9,5 @@ export default ()=>{
 
     api.post('/:id/runner', jwtAuth, homepageController.signupRun);
 
-    api.post('/:id/volunter', jwtAuth, homepageController.singupVoluntary);
-
   return api;
 };

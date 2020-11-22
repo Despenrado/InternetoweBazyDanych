@@ -5,7 +5,6 @@ import bodyParser from 'body-parser';
 import auth from './routes/auth';
 import organizer from './routes/organizer';
 import admin from "./routes/admin";
-import message from './routes/message';
 import homepage from './routes/homepage';
 import profile from './routes/profile';
 import passport from './settings/passport';
@@ -29,8 +28,6 @@ app.use('/admin', admin());
 app.use('/api', auth());
 
 app.use('/organizer', organizer());
-
-app.use('/messages', message());
 
 app.use('/profile', profile());
 
