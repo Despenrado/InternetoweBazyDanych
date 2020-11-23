@@ -40,9 +40,12 @@ export default{
         },
 
         async registerUser(req, res, next){
-        const user_type = 'biegacz';
+        var user_type = 'biegacz';
         try {
-            const {login, first_name, last_name, birth_date, pass} = req.body;
+            const {login, first_name, last_name, birth_date, pass, type} = req.body;
+            if (type === "organizator"){
+                user_type = type;
+              }
             const user = await db.query(doesUserExistQuery, [login]);
             if(user.length == 0) {
                 const hashed_pass = await bcrypt.hash(pass, saltRounds);

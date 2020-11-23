@@ -11,5 +11,17 @@ export default ()=>{
 
     api.get('/:id/runners', jwtAuth, organizer.showRunners);
 
+    api.post('/result/:id', jwtAuth, organizer.addResults);
+    
+    api.put('/route/:id', jwtAuth, organizer.editRoute);
+
+    api.post('/route/add', jwtAuth, organizer.addRoute);
+
+    api.put('/runs/:id', jwtAuth, organizer.confirmRun);
+
+    api.delete('/:id/delete', jwtAuth, organizer.deleteRun);
+
+    api.get('/:id/read', jwtAuth, organizer.readRun);
+
     return api;
 }

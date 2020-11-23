@@ -5,10 +5,6 @@ import jwtAuth from '../middlewares/auth';
 export default ()=>{
     const api = Router();
 
-    api.put('/:id', jwtAuth, admin.editRoute);
-
-    api.post('/result/:id', jwtAuth, admin.addResults);
-
     api.post('/user', jwtAuth, admin.addUser);
 
     api.put('/runs/:id', jwtAuth, admin.confirmRun);

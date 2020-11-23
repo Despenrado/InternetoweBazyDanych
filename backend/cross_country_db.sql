@@ -30,12 +30,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `bieg` (
-  `ID_BIEG` int(10) UNSIGNED NOT NULL,
+  `ID_BIEG` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `DATA_BIEG` date NOT NULL,
   `ID_TRASA` int(10) NOT NULL,
   `LOGIN_UZYTKOWNIK` varchar(50) NOT NULL,
   `NAZWA_BIEG` varchar(100) NOT NULL DEFAULT 'Bieg',
-  `BIEG_AKCEPTACJA` bit(1) NOT NULL DEFAULT b'0'
+  `BIEG_AKCEPTACJA` bit(1) NOT NULL DEFAULT b'1',
+   PRIMARY KEY (`ID_BIEG`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -52,11 +53,12 @@ INSERT INTO `bieg` (`ID_BIEG`, `DATA_BIEG`, `ID_TRASA`, `LOGIN_UZYTKOWNIK`, `NAZ
 --
 
 CREATE TABLE `bieg_zakonczony` (
-  `ID_BIEG` int(10) UNSIGNED NOT NULL,
+  `ID_BIEG` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `DATA_BIEG` date NOT NULL,
   `ID_TRASA` int(10) NOT NULL,
   `LOGIN_UZYTKOWNIK` varchar(50) NOT NULL,
-  `NAZWA_BIEG` varchar(100) NOT NULL
+  `NAZWA_BIEG` varchar(100) NOT NULL,
+  PRIMARY KEY (`ID_BIEG`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -73,11 +75,12 @@ INSERT INTO `bieg_zakonczony` (`ID_BIEG`, `DATA_BIEG`, `ID_TRASA`, `LOGIN_UZYTKO
 --
 
 CREATE TABLE `trasa` (
-  `ID_TRASA` int(10) NOT NULL,
+  `ID_TRASA` int(10) NOT NULL AUTO_INCREMENT,
   `POCZATEK_TRASA` varchar(50) NOT NULL,
   `KONIEC_TRASA` varchar(50) NOT NULL,
   `MIASTO_TRASA` varchar(50) NOT NULL,
-  `DLUGOSC_TRASA` int(10) NOT NULL
+  `DLUGOSC_TRASA` int(10) NOT NULL,
+  PRIMARY KEY (`ID_TRASA`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -149,20 +152,21 @@ INSERT INTO `uzytkownik` (`LOGIN_UZYTKOWNIK`, `IMIE_UZYTKOWNIK`, `NAZWISKO_UZYTK
 --
 
 CREATE TABLE `wyniki` (
-  `ID_WYNIK` int(10) NOT NULL,
+  `ID_WYNIK` int(10) NOT NULL AUTO_INCREMENT,
   `LOGIN_UZYTKOWNIK` varchar(50) CHARACTER SET latin1 NOT NULL,
   `ID_BIEG` int(10) UNSIGNED NOT NULL,
   `MIEJSCE` int(5) NOT NULL,
-  `CZAS` time NOT NULL
+  `CZAS` time NOT NULL,
+  PRIMARY KEY (`ID_WYNIK`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Zrzut danych tabeli `wyniki`
 --
 
-INSERT INTO `wyniki` (`ID_WYNIK`, `LOGIN_UZYTKOWNIK`, `ID_BIEG`, `MIEJSCE`, `CZAS`) VALUES
-(1, 'gerhold.oliver', 1, 1, '23:52:00'),
-(2, 'lamazlo213', 1, 2, '23:52:00');
+INSERT INTO `wyniki` (`LOGIN_UZYTKOWNIK`, `ID_BIEG`, `MIEJSCE`, `CZAS`) VALUES
+('gerhold.oliver', 1, 1, '23:52:00'),
+('lamazlo213', 1, 2, '23:52:00');
 
 --
 -- Indeksy dla zrzutów tabel
@@ -172,7 +176,6 @@ INSERT INTO `wyniki` (`ID_WYNIK`, `LOGIN_UZYTKOWNIK`, `ID_BIEG`, `MIEJSCE`, `CZA
 -- Indeksy dla tabeli `bieg`
 --
 ALTER TABLE `bieg`
-  ADD PRIMARY KEY (`ID_BIEG`),
   ADD KEY `ID_TRASA` (`ID_TRASA`),
   ADD KEY `LOGIN_UZYTKOWNIK` (`LOGIN_UZYTKOWNIK`);
 
@@ -180,15 +183,10 @@ ALTER TABLE `bieg`
 -- Indeksy dla tabeli `bieg_zakonczony`
 --
 ALTER TABLE `bieg_zakonczony`
-  ADD PRIMARY KEY (`ID_BIEG`),
   ADD KEY `LOGIN_UZYTKOWNIK` (`LOGIN_UZYTKOWNIK`),
   ADD KEY `ID_TRASA` (`ID_TRASA`);
 
---
--- Indeksy dla tabeli `trasa`
---
-ALTER TABLE `trasa`
-  ADD PRIMARY KEY (`ID_TRASA`);
+
 
 --
 -- Indeksy dla tabeli `uczestnicy_bieg`
@@ -214,7 +212,7 @@ ALTER TABLE `uzytkownik`
 -- Indeksy dla tabeli `wyniki`
 --
 ALTER TABLE `wyniki`
-  ADD PRIMARY KEY (`ID_WYNIK`),
+ -- ADD PRIMARY KEY (`ID_WYNIK`),
   ADD KEY `LOGIN_UZYTKOWNIK` (`LOGIN_UZYTKOWNIK`),
   ADD KEY `ID_BIEG` (`ID_BIEG`);
 

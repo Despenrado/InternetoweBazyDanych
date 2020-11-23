@@ -20,7 +20,7 @@ export default {
     async editProfile(req,res,next){
         try{
             const {first_name, last_name, birth_date} = req.body;
-            const {login, type} = req.user[0];
+            const {login, type} = req.user;
 
             if(type=='organizator' || type == 'biegacz'){
                if(req.params.id == login) {

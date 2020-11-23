@@ -26,7 +26,7 @@ module.exports = {
 
     getRunsQuery: 'SELECT ID_BIEG, DATA_BIEG, NAZWA_BIEG, POCZATEK_TRASA, KONIEC_TRASA, MIASTO_TRASA, DLUGOSC_TRASA, IMIE_UZYTKOWNIK, NAZWISKO_UZYTKOWNIK ' +
         'FROM bieg INNER JOIN trasa ON trasa.ID_TRASA = bieg.ID_TRASA ' +
-        'INNER JOIN uzytkownik ON uzytkownik.LOGIN_UZYTKOWNIK = Bieg.LOGIN_UZYTKOWNIK WHERE BIEG_AKCEPTACJA = 0',
+        'INNER JOIN uzytkownik ON uzytkownik.LOGIN_UZYTKOWNIK = bieg.LOGIN_UZYTKOWNIK WHERE BIEG_AKCEPTACJA = 1',
         
     isSignedQuery: 'SELECT COUNT(LOGIN_UZYTKOWNIK ) ' +
         'FROM uczestnicy_bieg WHERE ID_BIEG = ? AND LOGIN_UZYTKOWNIK = ?',
@@ -37,9 +37,15 @@ module.exports = {
 
     editRouteQuery: 'UPDATE trasa SET POCZATEK_TRASA = ?, KONIEC_TRASA = ?, MIASTO_TRASA = ?, DLUGOSC_TRASA = ? WHERE ID_TRASA = ?',
 
+    addRouteQuery: 'INSERT INTO trasa (POCZATEK_TRASA, KONIEC_TRASA, MIASTO_TRASA, DLUGOSC_TRASA) VALUES(?, ?, ?, ?)',
+
     addResultsQuery: 'INSERT INTO wyniki (LOGIN_UZYTKOWNIK, ID_BIEG, MIEJSCE, CZAS) VALUES(?,?,?,?)',
 
     confirmRun: 'UPDATE bieg SET BIEG_AKCEPTACJA = 1 WHERE ID_BIEG = ?',
+
+    readRun: 'SELECT * FROM bieg WHERE ID_BIEG = ?',
+
+    deleteRun: 'DELETE FROM bieg WHERE ID_BIEG = ?',
 
     removeUser: 'DELETE FROM uzytkownik WHERE LOGIN_UZYTKOWNIK = ?',
 
@@ -51,7 +57,7 @@ module.exports = {
     
     showProfileQuery: 'SELECT IMIE_UZYTKOWNIK AS name, NAZWISKO_UZYTKOWNIK AS surname, DATA_URODZENIA_UZYTKOWNIK AS date, TYP_UZYTKOWNIK AS type FROM uzytkownik WHERE LOGIN_UZYTKOWNIK = ? ',
 
-    showRunnersQuery: 'SELECT IMIE_UZYTKOWNIK, NAZWISKO_UZYTKOWNIK, uczestnicy_bieg.LOGIN_UZYTKOWNIK FROM uczestnicy_bieg INNER JOIN Uzytkownik ON uczestnicy_bieg.LOGIN_UZYTKOWNIK = uzytkownik.LOGIN_UZYTKOWNIK WHERE ID_BIEG = ?',
+    showRunnersQuery: 'SELECT IMIE_UZYTKOWNIK, NAZWISKO_UZYTKOWNIK, uczestnicy_bieg.LOGIN_UZYTKOWNIK FROM uczestnicy_bieg INNER JOIN zytkownik ON uczestnicy_bieg.LOGIN_UZYTKOWNIK = uzytkownik.LOGIN_UZYTKOWNIK WHERE ID_BIEG = ?',
 
     getRunOrganizer: 'SELECT LOGIN_UZYTKOWNIK FROM bieg WHERE ID_BIEG = ?',
 

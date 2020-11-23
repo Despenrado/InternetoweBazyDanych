@@ -33,22 +33,7 @@ export default{
         }
     },
 
-    async addResults(req, res, next){
-        try{
-            const {type} = req.user[0];
-            if(type === 'admin') {
-                const {login, route, time} = req.body;
-                await db.query(addResultsQuery, [login, req.params.id, route, time]);
-                res.send('Wyniki zostały dodane');
-            }else{
-                res.send('Brak dostępu.');
-            }
-        }
-        catch(err) {
-            console.error(err);
-            res.send('Błąd! Nie udało dodać wyników');
-        }
-    },
+
 
     async addUser(req, res, next){
         try{
