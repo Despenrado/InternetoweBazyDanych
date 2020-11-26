@@ -9,15 +9,10 @@ module.exports = {
 
     doesUserExistQuery:'SELECT LOGIN_UZYTKOWNIK FROM uzytkownik WHERE LOGIN_UZYTKOWNIK = ?',
 
-    sendMessageQuery: 'INSERT INTO Wiadomosc (LOGIN_NADAWCA, LOGIN_ODBIORCA, TRESC_WIADOMOSC) VALUES (?, ?, ?)',
-
-    getMessagesQuery: 'SELECT DATA_WIADOMOSC, TRESC_WIADOMOSC, LOGIN_NADAWCA FROM Wiadomosc WHERE LOGIN_ODBIORCA = ? AND LOGIN_NADAWCA = ? OR LOGIN_ODBIORCA = ? AND LOGIN_NADAWCA = ? LIMIT 10',
-
-    getSendersQuery: 'SELECT DISTINCT LOGIN_NADAWCA, STATUS_WIADOMOSC, IMIE_UZYTKOWNIK, NAZWISKO_UZYTKOWNIK ' +
-        'FROM Wiadomosc INNER JOIN uzytkownik ON Wiadomosc.LOGIN_NADAWCA = uzytkownik.LOGIN_UZYTKOWNIK WHERE LOGIN_ODBIORCA = ?',
-
     addRunQuery: 'INSERT INTO bieg (DATA_BIEG, ID_TRASA, LOGIN_UZYTKOWNIK, NAZWA_BIEG) VALUES (?, ?, ?, ?)',
-
+    
+    finishRun: 'INSERT INTO bieg_zakonczony (ID_BIEG, DATA_BIEG, ID_TRASA, LOGIN_UZYTKOWNIK, NAZWA_BIEG) VALUES (?, ?, ?, ?, ?)',
+    
     editRunQuery: 'UPDATE bieg SET NAZWA_BIEG = ?, ID_TRASA = ?, DATA_BIEG = ? WHERE ID_BIEG = ?',
 
     loginUserQuery: 'SELECT TYP_UZYTKOWNIK AS type, HASHED_PASS_UZYTKOWNIK AS pass, LOGIN_UZYTKOWNIK AS login FROM uzytkownik WHERE LOGIN_UZYTKOWNIK = ?',
@@ -28,12 +23,10 @@ module.exports = {
         'FROM bieg INNER JOIN trasa ON trasa.ID_TRASA = bieg.ID_TRASA ' +
         'INNER JOIN uzytkownik ON uzytkownik.LOGIN_UZYTKOWNIK = bieg.LOGIN_UZYTKOWNIK WHERE BIEG_AKCEPTACJA = 1',
         
-    isSignedQuery: 'SELECT COUNT(LOGIN_UZYTKOWNIK ) ' +
+    isSignedQuery: 'SELECT COUNT(LOGIN_UZYTKOWNIK ) AS runner ' +
         'FROM uczestnicy_bieg WHERE ID_BIEG = ? AND LOGIN_UZYTKOWNIK = ?',
-        
-    signupVolunteryQuery: 'INSERT Wolontariusze_Bieg (ID_BIEG, LOGIN_UZYTKOWNIK) VALUES(?, ?)',
 
-    signupRunnerQuery: 'INSERT uczestnicy_bieg (ID_BIEG, LOGIN_UZYTKOWNIK) VALUES(?, ?)',
+    signupRunnerQuery: 'INSERT INTO uczestnicy_bieg (ID_BIEG, LOGIN_UZYTKOWNIK, OBECNOSC_BIEGACZ) VALUES(?, ?, 1)',
 
     editRouteQuery: 'UPDATE trasa SET POCZATEK_TRASA = ?, KONIEC_TRASA = ?, MIASTO_TRASA = ?, DLUGOSC_TRASA = ? WHERE ID_TRASA = ?',
 
@@ -57,7 +50,7 @@ module.exports = {
     
     showProfileQuery: 'SELECT IMIE_UZYTKOWNIK AS name, NAZWISKO_UZYTKOWNIK AS surname, DATA_URODZENIA_UZYTKOWNIK AS date, TYP_UZYTKOWNIK AS type FROM uzytkownik WHERE LOGIN_UZYTKOWNIK = ? ',
 
-    showRunnersQuery: 'SELECT IMIE_UZYTKOWNIK, NAZWISKO_UZYTKOWNIK, uczestnicy_bieg.LOGIN_UZYTKOWNIK FROM uczestnicy_bieg INNER JOIN zytkownik ON uczestnicy_bieg.LOGIN_UZYTKOWNIK = uzytkownik.LOGIN_UZYTKOWNIK WHERE ID_BIEG = ?',
+    showRunnersQuery: 'SELECT IMIE_UZYTKOWNIK, NAZWISKO_UZYTKOWNIK, uczestnicy_bieg.LOGIN_UZYTKOWNIK FROM uczestnicy_bieg INNER JOIN uzytkownik ON uczestnicy_bieg.LOGIN_UZYTKOWNIK = uzytkownik.LOGIN_UZYTKOWNIK WHERE ID_BIEG = ?',
 
     getRunOrganizer: 'SELECT LOGIN_UZYTKOWNIK FROM bieg WHERE ID_BIEG = ?',
 

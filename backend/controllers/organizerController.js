@@ -1,11 +1,10 @@
 import db from '../settings/db';
-import {addRunQuery, editRunQuery, getRunOrganizer, showRunnersQuery,addRouteQuery,readRun,deleteRun} from '../settings/queries';
+import {addRunQuery, editRunQuery, getRunOrganizer, showRunnersQuery,addRouteQuery,readRun,deleteRun,editRouteQuery,addResultsQuery,confirmRun} from '../settings/queries';
 
 export default {
     async addRun(req, res, next) {
         try {
             const {data_bieg, id_trasa, name} = req.body;
-            console.log(req.user)
             const {login, type} = req.user;
             if (type === 'organizator') {
                 await db.query(addRunQuery, [data_bieg, id_trasa, login, name]);
@@ -45,6 +44,22 @@ export default {
             const {type} = req.user;
             if(type === 'organizator') {
                 await db.query(confirmRun, [req.params.id]);
+                res.send('Bieg został pomyślnie zatwierdzony');
+            }else{
+                res.send('Brak dostępu.');
+            }
+        }
+        catch(err) {
+            console.error(err);
+            res.send('Błąd! Nie udało się zatwierdzić biegu');
+        }
+    },
+
+    async finishRun(req, res, next){
+        try{
+            const {login, type} = req.user;
+            if(type === 'organizator') {
+                await db.query(finishRun, [req.params.id, login, trasa, ]);
                 res.send('Bieg został pomyślnie zatwierdzony');
             }else{
                 res.send('Brak dostępu.');
@@ -148,10 +163,10 @@ export default {
                     const runners = await db.query(showRunnersQuery, [req.params.id]);
                     res.send(runners);
                 } else {
-                    res.send('Błąd..');
+                    res.send('Błąd nie niejsteś organizatorem tego biegu');
                 }
             }else{
-                res.send('Błąd...');
+                res.send('Błąd nie jesteś organizatorem');
             }
         } catch (err) {
             console.error(err);

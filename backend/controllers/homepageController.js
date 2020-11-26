@@ -6,7 +6,9 @@ export default {
         try {
             const {login, type} = req.user;
             if(type === 'biegacz' || type === 'organizator') {
+                console.log(req.user)
                 const isSigned = await db.query(isSignedQuery, [req.params.id, login]);
+                console.log(isSigned[0].runner)
                 if (isSigned[0].runner == 0) {
                     await db.query(signupRunnerQuery, [req.params.id, login]);
                     res.send('Zostałeś zapisany jako biegacz.');

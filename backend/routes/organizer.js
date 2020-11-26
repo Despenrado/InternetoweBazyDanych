@@ -11,6 +11,8 @@ export default ()=>{
 
     api.get('/:id/runners', jwtAuth, organizer.showRunners);
 
+    //api.post('/:id/finish', jwtAuth, organizer.finishRun);
+
     api.post('/result/:id', jwtAuth, organizer.addResults);
     
     api.put('/route/:id', jwtAuth, organizer.editRoute);

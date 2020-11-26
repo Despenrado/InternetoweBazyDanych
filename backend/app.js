@@ -4,7 +4,6 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import auth from './routes/auth';
 import organizer from './routes/organizer';
-import admin from "./routes/admin";
 import homepage from './routes/homepage';
 import profile from './routes/profile';
 import passport from './settings/passport';
@@ -22,8 +21,6 @@ app.use(cors({
 app.use(bodyParser.json({type: 'application/json'}));
 
 passport();
-
-app.use('/admin', admin());
 
 app.use('/api', auth());
 
