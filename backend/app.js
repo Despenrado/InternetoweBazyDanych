@@ -15,7 +15,7 @@ app.use(cors({
     credentials: true,
     methods: ['GET', 'POST', 'DELETE', 'PUT'],
     allowedHeader: ['Content-Type', 'Set-Cookie', '*']
-
+    
 }));
 
 app.use(bodyParser.json({type: 'application/json'}));

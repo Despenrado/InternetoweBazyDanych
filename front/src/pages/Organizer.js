@@ -4,7 +4,7 @@ import React from 'react';
 import Form from "../components/AddRunForm";
 
 // Variables
-const url = 'http://127.0.0.1:3100/organizer/add';
+const url = 'http://127.0.0.1:3102/organizer/add';
 
 // Functions
 import {submitForm} from "../components/Fetch";

@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 import AddRunForm from '../components/AddRunForm';
 
 // Variables
-const url = `http://127.0.0.1:3100/organizer/runs/`;
+const url = `http://127.0.0.1:3102/organizer/runs/`;
 
 // Functions
 import {updateUser} from "../components/Fetch";
@@ -39,7 +39,7 @@ const validateForm = async (e, changeState) => {
 const signRunner = async (e, updateState) =>{
     e.preventDefault();
     const id = e.target.parentElement.parentElement.attributes.run_id.value;
-    const res = await fetch(`http://127.0.0.1:3100/${id}/runner`, {
+    const res = await fetch(`http://127.0.0.1:3102/${id}/runner`, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',
@@ -51,7 +51,7 @@ const signRunner = async (e, updateState) =>{
 const signVolunteer = async (e, updateState) =>{
     e.preventDefault();
     const id = e.target.parentElement.parentElement.attributes.run_id.value;
-    const res = await fetch(`http://127.0.0.1:3100/${id}/volunter`, {
+    const res = await fetch(`http://127.0.0.1:3102/${id}/volunter`, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',

@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 const removeUser = async (e, updateState) => {
     e.preventDefault();
     const login = e.target.parentElement.attributes.login.value;
-    const res = await fetch(`http://127.0.0.1:3100/admin/users/${login}`, {
+    const res = await fetch(`http://127.0.0.1:3102/admin/users/${login}`, {
         method: "DELETE",
         mode: "cors",
         credentials: "include"

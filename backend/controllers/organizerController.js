@@ -1,5 +1,5 @@
 import db from '../settings/db';
-import {addRunQuery, editRunQuery, getRunOrganizer, showRunnersQuery,addRouteQuery,readRun,deleteRun,editRouteQuery,addResultsQuery,confirmRun} from '../settings/queries';
+import {addRunQuery, editRunQuery, getRunOrganizer, showRunnersQuery,addRouteQuery,readRun,deleteRun,editRouteQuery,addResultsQuery,confirmRun, finishRun} from '../settings/queries';
 
 export default {
     async addRun(req, res, next) {
@@ -58,8 +58,10 @@ export default {
     async finishRun(req, res, next){
         try{
             const {login, type} = req.user;
+            const {trasa_id, nazwa,data_bieg} = req.body;
+            console.log(req.user)
             if(type === 'organizator') {
-                await db.query(finishRun, [req.params.id, login, trasa, ]);
+                await db.query(finishRun, [req.params.id, data_bieg,trasa_id,login, nazwa]);
                 res.send('Bieg został pomyślnie zatwierdzony');
             }else{
                 res.send('Brak dostępu.');
@@ -108,8 +110,8 @@ export default {
         try{
             const {type} = req.user;
             if(type === 'organizator') {
-                const {login, route, time} = req.body;
-                await db.query(addResultsQuery, [login, req.params.id, route, time]);
+                const {login, place, time} = req.body;
+                await db.query(addResultsQuery, [login, req.params.id, place, time]);
                 res.send('Wyniki zostały dodane');
             }else{
                 res.send('Brak dostępu.');

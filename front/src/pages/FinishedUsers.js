@@ -4,7 +4,7 @@ import React from 'react';
 import List from "../components/List";
 
 // Variables
-const url = 'http://127.0.0.1:3100/finished/';
+const url = 'http://127.0.0.1:3102/finished/';
 
 const Homepage = () => {
     return(

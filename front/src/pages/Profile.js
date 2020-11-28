@@ -7,7 +7,7 @@ import EditUserForm from "../components/EditUserForm";
 import {submitForm} from "../components/Fetch";
 
 // Variables
-const url = 'http://127.0.0.1:3100/profile';
+const url = 'http://127.0.0.1:3102/profile';
 
 // Functions
 import {updateUser} from "../components/Fetch";

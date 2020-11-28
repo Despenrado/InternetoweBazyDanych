@@ -21,7 +21,7 @@ export default{
                 },
                     'Access-Control-Allow-Origin', 'http://127.0.0.1:3000',
                     'Access-Control-Allow-Credentials', 'true',
-                    'Access-Control-Allow-Methods', 'GET, POST',
+                    'Access-Control-Allow-Methods', 'GET', 'POST', 'DELETE', 'PUT',
                     'Access-Control-Allow-Headers', 'Content-Type, Set-Cookie, *'
                     ));
                     console.log("ok2")

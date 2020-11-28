@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 const acceptRun = async (e, updateState) =>{
     e.preventDefault();
     const id = e.target.parentElement.parentElement.attributes.run_id.value;
-    const res = await fetch(`http://127.0.0.1:3100/admin/runs/accept/${id}`, {
+    const res = await fetch(`http://127.0.0.1:3102/admin/runs/accept/${id}`, {
         method: 'PUT',
         mode: 'cors',
         credentials: 'include',

@@ -5,7 +5,7 @@ import List from "../components/List";
 import Run from "../components/Run";
 
 // Variables
-const url = 'http://127.0.0.1:3100/organizer/runs';
+const url = 'http://127.0.0.1:3102/organizer/runs';
 
 const Runs = () => {
     return(

@@ -7,7 +7,7 @@ import Form from '../components/SignUpForm';
 import {submitForm} from "../components/Fetch";
 
 // Variables
-const url = 'http://127.0.0.1:3100/api/register';
+const url = 'http://127.0.0.1:3102/api/register';
 
 const validateForm = async (e, changeState) => {
     let errors = [];

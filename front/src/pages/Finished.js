@@ -5,7 +5,7 @@ import List from "../components/List";
 import FinishedRun from "../components/FinishedRun";
 
 // Variables
-const url = 'http://127.0.0.1:3100/admin/finished';
+const url = 'http://127.0.0.1:3102/admin/finished';
 
 const Finished = () => {
     return(
