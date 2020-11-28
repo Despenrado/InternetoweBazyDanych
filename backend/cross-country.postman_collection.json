@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"login\": \"testtest1org\",\n    \"first_name\": \"test\",\n    \"last_name\": \"test\",\n    \"birth_date\": \"1998-11-18\",\n    \"pass\": \"password\",\n    \"type\": \"organizator\"\n}",
+					"raw": "{\n    \"login\": \"testtest1\",\n    \"first_name\": \"test\",\n    \"last_name\": \"test\",\n    \"birth_date\": \"1998-11-18\",\n    \"pass\": \"password\",\n    \"type\": \"organizator\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -39,12 +39,15 @@
 		},
 		{
 			"name": "login",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"login\": \"testtest1org\",\n    \"pass\": \"password\"\n}",
+					"raw": "{\n    \"login\": \"testtest2\",\n    \"pass\": \"password\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -75,7 +78,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:3102/organizer/2/runners",
+					"raw": "http://127.0.0.1:3102/organizer/3/runners",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -86,7 +89,7 @@
 					"port": "3102",
 					"path": [
 						"organizer",
-						"2",
+						"3",
 						"runners"
 					]
 				}
@@ -96,10 +99,22 @@
 		{
 			"name": "signuptoRun",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "http://127.0.0.1:3102/3/runner",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3102",
+					"path": [
+						"3",
+						"runner"
+					]
 				}
 			},
 			"response": []
@@ -172,11 +187,36 @@
 		},
 		{
 			"name": "editRoure",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"start\": \"start2\",\n    \"end\": \"end\",\n    \"city\": \"city\",\n    \"length\": 10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": ""
+					"raw": "http://127.0.0.1:3102/organizer/route/3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3102",
+					"path": [
+						"organizer",
+						"route",
+						"3"
+					]
 				}
 			},
 			"response": []
@@ -184,10 +224,32 @@
 		{
 			"name": "addResults",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"login\": \"testtest2\",\n    \"place\": 1,\n    \"time\": \"23:52:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": ""
+					"raw": "http://127.0.0.1:3102/organizer/result/3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3102",
+					"path": [
+						"organizer",
+						"result",
+						"3"
+					]
 				}
 			},
 			"response": []
@@ -230,7 +292,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://127.0.0.1:3102/organizer/2/read",
+					"raw": "http://127.0.0.1:3102/organizer/3/read",
 					"protocol": "http",
 					"host": [
 						"127",
@@ -241,7 +303,7 @@
 					"port": "3102",
 					"path": [
 						"organizer",
-						"2",
+						"3",
 						"read"
 					]
 				}
@@ -297,10 +359,32 @@
 		{
 			"name": "editRun",
 			"request": {
-				"method": "GET",
+				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"date\": \"2000-11-18\",\n    \"route\": 2,\n    \"name\": \"testedit\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": ""
+					"raw": "http://127.0.0.1:3102/organizer/3/edit",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3102",
+					"path": [
+						"organizer",
+						"3",
+						"edit"
+					]
 				}
 			},
 			"response": []
