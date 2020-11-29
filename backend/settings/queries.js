@@ -32,11 +32,15 @@ module.exports = {
 
     addRouteQuery: 'INSERT INTO trasa (POCZATEK_TRASA, KONIEC_TRASA, MIASTO_TRASA, DLUGOSC_TRASA) VALUES(?, ?, ?, ?)',
 
+    readRoutsQuery: 'SELECT * FROM trasa',
+
     addResultsQuery: 'INSERT INTO wyniki (LOGIN_UZYTKOWNIK, ID_BIEG, MIEJSCE, CZAS) VALUES(?,?,?,?)',
 
     confirmRun: 'UPDATE bieg SET BIEG_AKCEPTACJA = 1 WHERE ID_BIEG = ?',
 
     readRun: 'SELECT * FROM bieg WHERE ID_BIEG = ?',
+
+    readMyRunsQuery: 'SELECT * FROM bieg WHERE LOGIN_UZYTKOWNIK = ?',
 
     deleteRun: 'DELETE FROM bieg WHERE ID_BIEG = ?',
 

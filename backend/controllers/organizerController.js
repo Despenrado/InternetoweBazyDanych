@@ -1,5 +1,5 @@
 import db from '../settings/db';
-import {addRunQuery, editRunQuery, getRunOrganizer, showRunnersQuery,addRouteQuery,readRun,deleteRun,editRouteQuery,addResultsQuery,confirmRun, finishRun} from '../settings/queries';
+import {addRunQuery, editRunQuery, getRunOrganizer, showRunnersQuery,addRouteQuery,readRun,deleteRun,editRouteQuery,addResultsQuery,confirmRun, finishRun, readRoutsQuery,readMyRunsQuery} from '../settings/queries';
 
 export default {
     async addRun(req, res, next) {
@@ -106,6 +106,22 @@ export default {
         }
     },
 
+
+    async getRouts(req, res, next) {
+        try {
+            const {type} = req.user;
+            if(type === 'organizator' || type === 'biegacz') {
+                const route =await db.query(readRoutsQuery, []);
+                res.send(route);
+            }else{
+                res.send('Brak dostępu.');
+            }
+        } catch (err) {
+            console.error(err);
+            res.send('Błąd! Nie udało się wczytać trasę');
+        }
+    },
+
     async addResults(req, res, next){
         try{
             const {type} = req.user;
@@ -136,6 +152,22 @@ export default {
         catch(err) {
             console.error(err);
             res.send('Błąd! Nie udało się odczytać biegu');
+        }
+    },
+
+    async readMyRuns(req, res, next){
+        try{
+            const {login,type} = req.user;
+            if(type === 'organizator') {
+                const run = await db.query(readMyRunsQuery, [login]);
+                res.send(run);
+            }else{
+                res.send('Brak dostępu.');
+            }
+        }
+        catch(err) {
+            console.error(err);
+            res.send('Błąd! Nie udało się odczytać biegów');
         }
     },
 

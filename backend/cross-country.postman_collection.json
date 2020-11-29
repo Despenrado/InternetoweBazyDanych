@@ -47,7 +47,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"login\": \"testtest2\",\n    \"pass\": \"password\"\n}",
+					"raw": "{\n    \"login\": \"testtest1org\",\n    \"pass\": \"password\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -261,7 +261,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"data_bieg\": \"1998-11-18\",\n    \"id_trasa\": 1,\n    \"name\": \"test\"\n}",
+					"raw": "{\n    \"data_bieg\": \"1998-11-18\",\n    \"id_trasa\": 10,\n    \"name\": \"test\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -395,7 +395,19 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "http://127.0.0.1:3102/profile/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3102",
+					"path": [
+						"profile",
+						""
+					]
 				}
 			},
 			"response": []
@@ -426,10 +438,78 @@
 		{
 			"name": "editProfile",
 			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"zmiana\",\n    \"last_name\": \"zmiana\",\n    \"birth_date\": \"1998-11-18\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3102/profile/testtest2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3102",
+					"path": [
+						"profile",
+						"testtest2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllRouts",
+			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "http://127.0.0.1:3102/organizer/route/all",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3102",
+					"path": [
+						"organizer",
+						"route",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "readMyRuns",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:3102/organizer/runs",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3102",
+					"path": [
+						"organizer",
+						"runs"
+					]
 				}
 			},
 			"response": []

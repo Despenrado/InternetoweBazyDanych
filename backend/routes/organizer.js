@@ -25,5 +25,9 @@ export default ()=>{
 
     api.get('/:id/read', jwtAuth, organizer.readRun);
 
+    api.get('/route/all', jwtAuth, organizer.getRouts)
+
+    api.get('/runs', jwtAuth, organizer.readMyRuns)
+
     return api;
 }
