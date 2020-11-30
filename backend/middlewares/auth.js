@@ -5,7 +5,6 @@ import {secret} from '../settings/environments';
 const authToken = async (req, res, next) => {
     try {
         const cookies = req.headers.cookie;
-        console.log(cookies)
         const parsedCookie = cookie.parse(cookies);
         const decodedCookie = await jwt.verify(parsedCookie.crosscountrytoken, secret);
         req.user = {
