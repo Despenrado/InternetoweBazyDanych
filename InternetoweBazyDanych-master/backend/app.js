@@ -1,5 +1,5 @@
 import express from 'express';
-import {port, secret} from './settings/environments';
+import {port, secret, url} from './settings/environments';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import auth from './routes/auth';
@@ -11,7 +11,7 @@ import passport from './settings/passport';
 const app = express();
 
 app.use(cors({
-    origin: 'http://127.0.0.1:3000',
+    origin: {url},
     credentials: true,
     methods: ['GET', 'POST', 'DELETE', 'PUT'],
     allowedHeader: ['Content-Type', 'Set-Cookie', '*']

@@ -2,7 +2,7 @@ import db from '../settings/db';
 import cookie from 'cookie';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import {secret} from '../settings/environments';
+import {secret, url} from '../settings/environments';
 import {options} from '../settings/jwt';
 import {doesUserExistQuery, registerUserQuery} from '../settings/queries';
 const saltRounds = 10;
@@ -18,7 +18,7 @@ export default{
                     maxAge: 60 * 60 * 24 * 7,
                     path: '/'
                 },
-                    'Access-Control-Allow-Origin', 'http://127.0.0.1:3000',
+                    'Access-Control-Allow-Origin', {url},
                     'Access-Control-Allow-Credentials', 'true',
                     'Access-Control-Allow-Methods', 'GET', 'POST', 'DELETE', 'PUT',
                     'Access-Control-Allow-Headers', 'Content-Type, Set-Cookie, *'
@@ -42,23 +42,12 @@ export default{
 
         async logoutUser(req, res, next){
             try{
-                const token = "";
-                res.setHeader('Set-Cookie', cookie.serialize('crosscountrytoken', token, {
-                    httpOnly: true,
-                    signed: true,
-                    sameSite: true,
-                    maxAge: 60 * 60 * 24 * 7,
-                    path: '/'
-                },
-                    'Access-Control-Allow-Origin', 'http://127.0.0.1:3000',
-                    'Access-Control-Allow-Credentials', 'true',
-                    'Access-Control-Allow-Methods', 'GET', 'POST', 'DELETE', 'PUT',
-                    'Access-Control-Allow-Headers', 'Content-Type, Set-Cookie, *'
-                    ));
+                res.clearCookie('crosscountrytoken');
                 res.json({
-                   message: 'Wylogowano z serwisu!',
-                   success: true,
-                });
+                    message: 'Wylogowano z serwisu!',
+                    success: true,
+                     loged: '0'
+                 });
             }catch(err) {
                 console.error(err);
                 res.json({

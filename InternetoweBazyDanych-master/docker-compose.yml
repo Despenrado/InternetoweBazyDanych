@@ -1,0 +1,36 @@
+version: "3.5"
+services:
+  mysqldb:
+    image: mysql:8.0
+    container_name: ibd-db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: "cross_country_db"
+      MYSQL_USER: "root"
+      MYSQL_PASSWORD: "password"
+      MYSQL_ROOT_PASSWORD: "password"
+    restart: always
+    volumes:
+      - ./cross_country_db:/var/lib/mysql
+      - ./backend/cross_country_db.sql:/docker-entrypoint-initdb.d
+  nodejs-service:
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    image: nodejs-service:test
+    container_name: nodejs-service
+    depends_on:
+      - mysqldb
+    ports:
+      - "3102:3102"
+    links:
+      - "mysqldb:mysqldb"
+  react-service:
+    build:
+      context: front
+      dockerfile: Dockerfile
+    image: react-service:test
+    container_name: react-service
+    ports:
+      - "3000:3000"

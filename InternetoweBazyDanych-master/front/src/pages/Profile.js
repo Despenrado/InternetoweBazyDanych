@@ -1,14 +1,14 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 
 // Components
 import List from "../components/List";
 import User from "../components/User";
 
 import EditUserForm from "../components/EditUserForm";
-import {submitForm} from "../components/Fetch";
-import AboutMe from"../components/AboutMe";
+import { submitForm } from "../components/Fetch";
+import AboutMe from "../components/AboutMe";
 // Variables
-const url = 'http://127.0.0.1:3102/profile';
+const url = "http://0.0.0.0:3102/profile";
 
 // // Functions
 // import {updateUser} from "../components/Fetch";
@@ -40,26 +40,26 @@ const url = 'http://127.0.0.1:3102/profile';
 // };
 
 const Profile = () => {
-   
-   // const [form, showForm] = useState(true);
-   const [form] = useState(true);
-  
-    return (
-        <section className={'profile'}>
-            {
-            //  (!form?(<List url={url} child={User}/>):(<EditUserForm submitForm={validateForm}/>))
-            }
-            {
-                (localStorage.getItem('type') === 'biegacz'&&<a className={'user__button'} href={'/profile/stats'}><p className={'user--text user--button'}>Pokaż
-                    statystyki</p></a>)
-            }
-            {/* <a className={'user__button'} onClick={() => showForm(!form)}><p className={'user--text user--button'}>Edytuj dane</p></a> */}
-            <a className={'user__button'}href={'/profile/edit'}>
-            <p className={'user--text user--button'}>Edytuj dane</p></a>
-            <List url={'http://127.0.0.1:3102/profile/'} child={User}/>
-        </section>
-       
-    );
-}
+  // const [form, showForm] = useState(true);
+  const [form] = useState(true);
+
+  return (
+    <section className={"profile"}>
+      {
+        //  (!form?(<List url={url} child={User}/>):(<EditUserForm submitForm={validateForm}/>))
+      }
+      {localStorage.getItem("type") === "biegacz" && (
+        <a className={"user__button"} href={"/profile/stats"}>
+          <p className={"user--text user--button"}>Pokaż statystyki</p>
+        </a>
+      )}
+      {/* <a className={'user__button'} onClick={() => showForm(!form)}><p className={'user--text user--button'}>Edytuj dane</p></a> */}
+      <a className={"user__button"} href={"/profile/edit"}>
+        <p className={"user--text user--button"}>Edytuj dane</p>
+      </a>
+      <List url={"http://0.0.0.0:3102/profile/"} child={User} />
+    </section>
+  );
+};
 
 export default Profile;
