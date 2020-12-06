@@ -80,7 +80,7 @@ const Run = ({data}) => {
                   }
                   {
                       (localStorage.getItem('type') === "organizator" && window.location.href === 'http://127.0.0.1:3000/organizer/runs' && (
-                              <button onClick={e => showForm(!visibility)}>{"Edytuj bieg"}</button>)
+                              <button onClick={e => showForm(!visibility)}>{"Edit Run"}</button>)
                       )
                   }
               </div>
