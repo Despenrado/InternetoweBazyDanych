@@ -60,12 +60,12 @@ const Run = ({data}) => {
           {
               !visibility?(
               <div className={"run__left"}>
-                  <p className={"run--text"}>{`Organizator: ${data.IMIE_UZYTKOWNIK} ${data.NAZWISKO_UZYTKOWNIK}`}</p>
-                  <p className={"run--text"}>{`Data: ${date[0]}`}</p>
-                  <p className={"run--text"}>{`Miasto: ${data.MIASTO_TRASA}`}</p>
+                  <p className={"run--text"}>{`Organizer: ${data.IMIE_UZYTKOWNIK} ${data.NAZWISKO_UZYTKOWNIK}`}</p>
+                  <p className={"run--text"}>{`Date: ${date[0]}`}</p>
+                  <p className={"run--text"}>{`City: ${data.MIASTO_TRASA}`}</p>
                   <p className={"run--text"}>{`Start: ${data.POCZATEK_TRASA}`}</p>
-                  <p className={"run--text"}>{`Meta: ${data.KONIEC_TRASA}`}</p>
-                  <p className={"run--text"}>{`Długość: ${data.DLUGOSC_TRASA}km`}</p>
+                  <p className={"run--text"}>{`End: ${data.KONIEC_TRASA}`}</p>
+                  <p className={"run--text"}>{`Length: ${data.DLUGOSC_TRASA}km`}</p>
                   {
                       (localStorage.getItem('type') === "biegacz" && (
                           <button onClick={e => signRunner(e, updateText)}>{"Join to run!"}</button>))
