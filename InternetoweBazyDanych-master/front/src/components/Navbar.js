@@ -23,7 +23,7 @@ function logout() {
     console.log('Log out')
     localStorage.clear();
     
-    fetch('http://127.0.0.1:3102/api/logout', {
+    fetch(process.env.REACT_APP_UNSPLASH_URL+'/api/logout', {
         method: "GET",
         mode: "cors",
         credentials: "include",

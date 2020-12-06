@@ -5,7 +5,7 @@ import List from "../components/List";
 import Run from "../components/OrgRun";
 
 // Variables
-const url = 'http://127.0.0.1:3102/organizer/runs';
+const url = process.env.REACT_APP_UNSPLASH_URL+'/organizer/runs';
 
 const Runs = () => {
     return(

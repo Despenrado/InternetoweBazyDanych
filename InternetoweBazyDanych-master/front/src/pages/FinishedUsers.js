@@ -4,7 +4,7 @@ import React from 'react';
 import List from "../components/List";
 
 // Variables
-const url = 'http://127.0.0.1:3102/finished/';
+const url = process.env.REACT_APP_UNSPLASH_URL+'/finished/';
 
 const Homepage = () => {
     return(

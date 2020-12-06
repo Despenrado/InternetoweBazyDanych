@@ -8,7 +8,7 @@ import SubmitForm from "../components/Fetch";
 // Variables
 const href = window.location.href.split('/');
 // const url = `http://127.0.0.1:3102/organizer/runs/`;
-const url = `http://127.0.0.1:3102/organizer/${href[href.length-1]}/runners/`;
+const url = process.env.REACT_APP_UNSPLASH_URL+`/organizer/${href[href.length-1]}/runners/`;
 const FinishRun = () => {
 
   const id=href[href.length-1]
@@ -16,7 +16,7 @@ const FinishRun = () => {
     
     return(
         <section className={"runs"}>
-            <List url={`http://127.0.0.1:3102/organizer/${id}/runners/`} child={UserToFinish}/>
+            <List url={+process.env.REACT_APP_UNSPLASH_URL+`/${id}/runners/`} child={UserToFinish}/>
         </section>
     );
 }

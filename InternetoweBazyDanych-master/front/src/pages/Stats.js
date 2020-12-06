@@ -5,7 +5,7 @@ import List from '../components/List';
 import Result from '../components/Result';
 
 // Variables
-const url = 'http://127.0.0.1:3102/profile/stats';
+const url = process.env.REACT_APP_UNSPLASH_URL+'/profile/stats';
 
 const Stats = () => {
     return(

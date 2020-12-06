@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react';
 import AddRunForm from '../components/AddRunForm';
 
 // Variables
-const url = `http://127.0.0.1:3102/organizer/runs/`;
+const url = process.env.REACT_APP_UNSPLASH_URL+`/organizer/runs/`;
 
 // Functions
 import {updateUser,submitForm,fetchData,deleteData} from "../components/Fetch";
@@ -17,10 +17,10 @@ data.nazwa = Fromdata.NAZWA_BIEG;
 data.trasa_id = Fromdata.ID_TRASA;
 data.time = "23:52:00";
 data.data_bieg = date[0];
-  await submitForm(`http://127.0.0.1:3102/organizer/${Fromdata.ID_BIEG}/finish`, data);
+  await submitForm(process.env.REACT_APP_UNSPLASH_URL+`/organizer/${Fromdata.ID_BIEG}/finish`, data);
 
 //Skasowanie biegu
-await deleteData(`http://127.0.0.1:3102/organizer/${Fromdata.ID_BIEG}/delete`);
+await deleteData(process.env.REACT_APP_UNSPLASH_URL+`/organizer/${Fromdata.ID_BIEG}/delete`);
     
    
 }
@@ -45,7 +45,7 @@ const validateForm = async (e, changeState) => {
         data.name = form['name'].value;
         data.route = form['route'].value;
         data.date = '1998-11-18';
-        await updateUser(`http://127.0.0.1:3102/organizer/${id}/edit`, data, changeState);
+        await updateUser(process.env.REACT_APP_UNSPLASH_URL+`/${id}/edit`, data, changeState);
         form['name'].value = '';
         form['route'].value = '';
     }
@@ -54,7 +54,7 @@ const validateForm = async (e, changeState) => {
 const signRunner = async (e, updateState) =>{
     e.preventDefault();
     const id = e.target.parentElement.parentElement.attributes.run_id.value;
-    const res = await fetch(`http://127.0.0.1:3102/${id}/runner`, {
+    const res = await fetch(process.env.REACT_APP_UNSPLASH_URL+`/${id}/runner`, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',

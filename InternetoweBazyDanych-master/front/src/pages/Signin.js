@@ -9,7 +9,7 @@ import {submitForm} from "../components/Fetch";
 
 
 // Variables
-const url = 'http://127.0.0.1:3102/api/login';
+const url = process.env.REACT_APP_UNSPLASH_URL+'/api/login';
 let log=false;
 const validateForm = async (e, changeState) => {
     let errors = [];
@@ -55,7 +55,7 @@ const SignIn = () => {
         <Form submitForm={validateForm}/>
         <CookieConsent
   location="bottom"
-  buttonText="Sure man!!"
+  buttonText="Ok!"
   cookieName="myAwesomeCookieName2"
   style={{ background: "#2B373B" }}
   buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
