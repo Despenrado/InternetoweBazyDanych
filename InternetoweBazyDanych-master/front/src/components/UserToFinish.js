@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { submitForm } from "./Fetch";
+import React, {useState} from 'react';
+import { submitForm } from './Fetch';
 
 // const removeUser = async (e, updateState) => {
 //     e.preventDefault();
 //     const login = e.target.parentElement.attributes.login.value;
-//     const res = await fetch(`http://0.0.0.0:3102/admin/users/${login}`, {
+//     const res = await fetch(`http://127.0.0.1:3102/admin/users/${login}`, {
 //         method: "DELETE",
 //         mode: "cors",
 //         credentials: "include"
@@ -12,7 +12,6 @@ import { submitForm } from "./Fetch";
 //     const data = await res.text();
 //     updateState(data);
 // }
-
 Date.prototype.yyyymmdd = function() {
     var mm = this.getMonth() + 1; // getMonth() is zero-based
     var dd = this.getDate();
@@ -54,41 +53,5 @@ const UserToFinish = ({data}) => {
       </div>
     );
 }
-const UserToFinish = ({ data }) => {
-  const [text, updateText] = useState("");
-  let date = data.date;
-  var dateStr = data.date;
-
-  var dateformat = new Date(dateStr);
-  dateformat = dateformat.yyyymmdd();
-
-  return (
-    <div className={"user"} login={data.login}>
-      <p className={"user--text"}>{`Name: ${data.IMIE_UZYTKOWNIK}`}</p>
-      <p className={"user--text"}>{`Surname: ${data.NAZWISKO_UZYTKOWNIK}`}</p>
-      <p className={"user--text"}>{`Login: ${data.LOGIN_UZYTKOWNIK}`}</p>
-      {/* <input className={"form_input"} type={"time"}> Time: </input> */}
-      <p className={"user--text"}>Time: </p>
-      <input type={"time"} name={"time"} id={"time"}></input>
-      <p className={"user--text"}>Place: </p>
-      <input type={"number"} name={"place"} id={"place"}></input>
-      <button
-        className={"form_button"}
-        onClick={(e) =>
-          sendScore(
-            e,
-            document.getElementById("time").value,
-            document.getElementById("place").value,
-            data
-          )
-        }
-      >
-        Send score
-      </button>
-
-      <p className={"user--text"}>{text}</p>
-    </div>
-  );
-};
 
 export default UserToFinish;

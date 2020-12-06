@@ -7,7 +7,7 @@ const pool = mysql.createPool({
     port: db.port,
     user: db.user,
     password: db.pass,
-    database: 'cross_country_db',
+    database: db.database,
     connectionLimit: db.limit
 })
 

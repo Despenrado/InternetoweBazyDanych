@@ -1,35 +1,15 @@
--- phpMyAdmin SQL Dump
--- version 4.9.2
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Czas generowania: 10 Gru 2019, 17:42
--- Wersja serwera: 10.4.10-MariaDB
--- Wersja PHP: 7.1.33
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
+-- SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+-- SET AUTOCOMMIT = 0;
+-- START TRANSACTION;
+-- SET time_zone = "+00:00";
 
 
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+CREATE DATABASE IF NOT EXISTS cross_country_db;
+USE cross_country_db;
 
---
--- Baza danych: `cross_country_db`
---
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `bieg`
---
-
-CREATE TABLE `bieg` (
+CREATE TABLE IF NOT EXISTS `bieg` (
   `ID_BIEG` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `DATA_BIEG` date NOT NULL,
   `ID_TRASA` int(10) NOT NULL,
@@ -52,7 +32,7 @@ INSERT INTO `bieg` (`ID_BIEG`, `DATA_BIEG`, `ID_TRASA`, `LOGIN_UZYTKOWNIK`, `NAZ
 -- Struktura tabeli dla tabeli `bieg_zakonczony`
 --
 
-CREATE TABLE `bieg_zakonczony` (
+CREATE TABLE IF NOT EXISTS `bieg_zakonczony` (
   `ID_BIEG` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
   `DATA_BIEG` date NOT NULL,
   `ID_TRASA` int(10) NOT NULL,
@@ -74,7 +54,7 @@ INSERT INTO `bieg_zakonczony` (`ID_BIEG`, `DATA_BIEG`, `ID_TRASA`, `LOGIN_UZYTKO
 -- Struktura tabeli dla tabeli `trasa`
 --
 
-CREATE TABLE `trasa` (
+CREATE TABLE IF NOT EXISTS `trasa` (
   `ID_TRASA` int(10) NOT NULL AUTO_INCREMENT,
   `POCZATEK_TRASA` varchar(50) NOT NULL,
   `KONIEC_TRASA` varchar(50) NOT NULL,
@@ -96,7 +76,7 @@ INSERT INTO `trasa` (`ID_TRASA`, `POCZATEK_TRASA`, `KONIEC_TRASA`, `MIASTO_TRASA
 -- Struktura tabeli dla tabeli `uczestnicy_bieg`
 --
 
-CREATE TABLE `uczestnicy_bieg` (
+CREATE TABLE IF NOT EXISTS `uczestnicy_bieg` (
   `ID_BIEG` int(10) UNSIGNED NOT NULL,
   `LOGIN_UZYTKOWNIK` varchar(50) NOT NULL,
   `OBECNOSC_BIEGACZ` tinyint(1) NOT NULL
@@ -108,7 +88,7 @@ CREATE TABLE `uczestnicy_bieg` (
 -- Struktura tabeli dla tabeli `uczestnicy_bieg_zakonczony`
 --
 
-CREATE TABLE `uczestnicy_bieg_zakonczony` (
+CREATE TABLE IF NOT EXISTS `uczestnicy_bieg_zakonczony` (
   `ID_BIEG` int(10) UNSIGNED NOT NULL,
   `LOGIN_UZYTKOWNIK` varchar(50) NOT NULL,
   `CZAS` time(6) NOT NULL
@@ -120,7 +100,7 @@ CREATE TABLE `uczestnicy_bieg_zakonczony` (
 -- Struktura tabeli dla tabeli `uzytkownik`
 --
 
-CREATE TABLE `uzytkownik` (
+CREATE TABLE IF NOT EXISTS `uzytkownik` (
   `LOGIN_UZYTKOWNIK` varchar(50) NOT NULL,
   `IMIE_UZYTKOWNIK` varchar(100) NOT NULL,
   `NAZWISKO_UZYTKOWNIK` varchar(100) NOT NULL,
@@ -151,7 +131,7 @@ INSERT INTO `uzytkownik` (`LOGIN_UZYTKOWNIK`, `IMIE_UZYTKOWNIK`, `NAZWISKO_UZYTK
 -- Struktura tabeli dla tabeli `wyniki`
 --
 
-CREATE TABLE `wyniki` (
+CREATE TABLE IF NOT EXISTS `wyniki` (
   `ID_WYNIK` int(10) NOT NULL AUTO_INCREMENT,
   `LOGIN_UZYTKOWNIK` varchar(50) CHARACTER SET latin1 NOT NULL,
   `ID_BIEG` int(10) UNSIGNED NOT NULL,
