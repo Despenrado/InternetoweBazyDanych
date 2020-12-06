@@ -50,12 +50,12 @@ const Profile = () => {
             //  (!form?(<List url={url} child={User}/>):(<EditUserForm submitForm={validateForm}/>))
             }
             {
-                (localStorage.getItem('type') === 'biegacz'&&<a className={'user__button'} href={'/profile/stats'}><p className={'user--text user--button'}>Pokaż
-                    statystyki</p></a>)
+                (localStorage.getItem('type') === 'biegacz'&&<a className={'user__button'} href={'/profile/stats'}><p className={'user--text user--button'}>Show Statistics
+                    </p></a>)
             }
             {/* <a className={'user__button'} onClick={() => showForm(!form)}><p className={'user--text user--button'}>Edytuj dane</p></a> */}
             <a className={'user__button'}href={'/profile/edit'}>
-            <p className={'user--text user--button'}>Edytuj dane</p></a>
+            <p className={'user--text user--button'}>Edit Profile</p></a>
             <List url={'http://127.0.0.1:3102/profile/'} child={User}/>
         </section>
        
