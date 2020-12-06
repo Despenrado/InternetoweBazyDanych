@@ -16,10 +16,21 @@ const Menu = ({ items }) => {
 };
 
 function logout() {
-  console.log("Log out");
-  localStorage.clear();
 
-  fetch("http://0.0.0.0:3102/api/logout", {
+    console.log('Log out')
+    localStorage.clear();
+    
+    fetch(process.env.REACT_APP_UNSPLASH_URL+'/api/logout', {
+        method: "GET",
+        mode: "cors",
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json",
+        },
+       // body: JSON.stringify(body)
+    })
+
+  fetch(process.env.REACT_APP_UNSPLASH_URL+"/api/logout", {
     method: "GET",
     mode: "cors",
     credentials: "include",

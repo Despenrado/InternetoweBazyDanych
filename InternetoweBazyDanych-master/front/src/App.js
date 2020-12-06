@@ -21,40 +21,40 @@ import decode from 'jwt-decode';
 const guestMenu =[{name: 'Sign in', url: '/login'}, {name: 'Sign up', url: '/register'}];
 const runnerMenu = [{name: 'Profile', url: '/profile'}, {name: 'Sign out',url:'/',logout:1}];
 const organizerMenu = [{name: 'Profile', url: '/profile'}, {name: 'Organizer', url: '/organizer'}, {name: 'Sign out',url: '/',logout:1}];
-const adminMenu = [{name: 'Admin panel', url: '/admin'}, {name: 'Sign out'}];
+
 
 const App = () => {
+    const checkAuth = () =>{
+        const token = localStorage.getItem('token');
+        const refreshToken = localStorage.getItem('refreshToken');
+        if(!token || !refreshToken){
+            return false;
+        }
+
+        try{
+          const {exp}=decode(refreshToken);
+
+          if(exp < new Date().getTime()/1000){
+              return false;
+          }
+        }  catch (e){
+       return true;
+       }
+       return true;
+    }
+
+    const AuthRoute = ({ component: Component, ...rest}) => (
+        <Route {...rest} render ={props => (
+            checkAuth() ? (
+                <Component {...props} />
+            ) : ( 
+                <Redirect to={{pathname: '/'}} />
+            )
+        )} />
+    )
+
         const [menu, changeMenu] = useState(guestMenu);
        
-     const checkAuth = () =>{
-         const token = localStorage.getItem('token');
-         const refreshToken = localStorage.getItem('refreshToken');
-         if(!token || !refreshToken){
-             return false;
-         }
-
-         try{
-           const {exp}=decode(refreshToken);
-
-           if(exp < new Date().getTime()/1000){
-               return false;
-           }
-         }  catch (e){
-        return true;
-        }
-        return true;
-     }
-
-     const AuthRoute = ({ component: Component, ...rest}) => (
-         <Route {...rest} render ={props => (
-             checkAuth() ? (
-                 <Component {...props} />
-             ) : ( 
-                 <Redirect to={{pathname: '/'}} />
-             )
-         )} />
-     )
-
         useEffect(() => {
             console.log(localStorage.getItem('type'))
             if(localStorage.getItem('type') === 'guest')

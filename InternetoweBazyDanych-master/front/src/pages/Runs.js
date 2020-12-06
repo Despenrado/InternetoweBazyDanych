@@ -1,18 +1,20 @@
-import React from "react";
 
-// Components
-import List from "../components/List";
-import UnacceptedRun from "../components/UnacceptedRun";
+// import React from 'react';
 
-// Variables
-const url = "http://0.0.0.0:3102/admin/runs";
+// // Components
+// import List from "../components/List";
+// import UnacceptedRun from "../components/UnacceptedRun";
 
-const Runs = () => {
-  return (
-    <section className={"runs"}>
-      <List url={url} child={UnacceptedRun} />
-    </section>
-  );
-};
+// // Variables
+// const url = 'http://127.0.0.1:3102/admin/runs';
 
-export default Runs;
+// const Runs = () => {
+//     return(
+//         <section className={"runs"}>
+//             <List url={url} child={UnacceptedRun}/>
+//         </section>
+//     );
+// }
+
+// export default Runs;
+

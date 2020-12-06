@@ -4,7 +4,8 @@ import React from "react";
 import Form from "../components/AddRunForm";
 
 // Variables
-const url = "http://0.0.0.0:3102/organizer/add";
+
+const url = process.env.REACT_APP_UNSPLASH_URL+'/organizer/add';
 
 // Functions
 import { submitForm } from "../components/Fetch";

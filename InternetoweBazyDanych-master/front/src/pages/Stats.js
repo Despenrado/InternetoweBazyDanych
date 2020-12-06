@@ -4,8 +4,8 @@ import React from "react";
 import List from "../components/List";
 import Result from "../components/Result";
 
-// Variables
-const url = "http://0.0.0.0:3102/profile/stats";
+// Variable
+const url = process.env.REACT_APP_UNSPLASH_URL+'/profile/stats';
 
 const Stats = () => {
   return (

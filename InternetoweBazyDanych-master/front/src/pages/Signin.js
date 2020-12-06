@@ -8,8 +8,9 @@ import Form from "../components/SignInForm";
 import { submitForm } from "../components/Fetch";
 
 // Variables
-const url = "http://0.0.0.0:3102/api/login";
-let log = false;
+
+const url = process.env.REACT_APP_UNSPLASH_URL+'/api/login';
+let log=false;
 const validateForm = async (e, changeState) => {
   let errors = [];
   const form = document.forms["signInForm"];
@@ -40,30 +41,31 @@ const validateForm = async (e, changeState) => {
     if (redirect.success) {
       localStorage.setItem("token", token);
       localStorage.setItem("refreshToken", refreshToken);
-      window.location.href = "http://127.0.0.1:3000/";
+      window.location.href = process.env.FRONT_IP+"/";
     }
   }
 };
 
 const SignIn = () => {
-  return (
-    <section className={"sign"}>
-      <Form submitForm={validateForm} />
-      <CookieConsent
-        location="bottom"
-        buttonText="Sure man!!"
-        cookieName="myAwesomeCookieName2"
-        style={{ background: "#2B373B" }}
-        buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
-        expires={150}
-      >
-        This website uses cookies to enhance the user experience.{" "}
-        <span style={{ fontSize: "10px" }}>
-          We use cookies in this website to give you the best authentication
-        </span>
-      </CookieConsent>
-    </section>
-  );
-};
+    
+    return(
+      <section className={"sign"}>
+          
+        <Form submitForm={validateForm}/>
+        <CookieConsent
+  location="bottom"
+  buttonText="Ok!"
+  cookieName="myAwesomeCookieName2"
+  style={{ background: "#2B373B" }}
+  buttonStyle={{ color: "#4e503b", fontSize: "13px" }}
+  expires={150}
+>
+  This website uses cookies to enhance the user experience.{" "}
+  <span style={{ fontSize: "10px" }}>We use cookies in this website to give you the best authentication</span>
+</CookieConsent>
+      
+      </section>
+    );
+}
 
 export default SignIn;
