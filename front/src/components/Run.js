@@ -88,11 +88,11 @@ const Run = ({data}) => {
                   }
                   {
                       (localStorage.getItem('type') === "organizator" && window.location.href === 'http://127.0.0.1:3000/organizer/runs' && (
-                          <a href={`/organizer/runs/${data.ID_BIEG}`}>Zobacz biegaczy</a>))
+                          <a href={`/organizer/runs/${data.ID_BIEG}`}>Show Runners</a>))
                   }
                   {
                       (localStorage.getItem('type') === "organizator" && window.location.href === 'http://127.0.0.1:3000/organizer/runs' && (
-                              <button onClick={e => showForm(!visibility)}>{"Edytuj bieg"}</button>)
+                              <button onClick={e => showForm(!visibility)}>{"Edit Run"}</button>)
                       )
                   }
               </div>
