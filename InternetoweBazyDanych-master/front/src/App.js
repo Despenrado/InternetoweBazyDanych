@@ -86,9 +86,9 @@ const App = () => {
                         <AuthRoute  exact path="/profile/edit" component={EditProfile}/>
                         <AuthRoute exact path="/organizer" component ={Organizer}/>   
                         <AuthRoute exact path="/organizer/runs" component ={OrganizerRuns}/>                          
-                        <AuthRoute exact path="/organizer/runners" component={OrganizerUsers}/>
+                        <AuthRoute exact path="/organizer/runners/:id" component={OrganizerUsers}/>
                         <AuthRoute exact path='/organizer/route' component={AddRoute}/>                        
-                        <AuthRoute exact path="/organizer/finishrun/:id" component={FinishRun}/>
+                        <AuthRoute exact path="/organizer/Finishrun/:id" component={FinishRun}/>
                     </Switch>
                 </div>
             </BrowserRouter>

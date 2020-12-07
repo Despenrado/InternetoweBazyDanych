@@ -1,16 +1,6 @@
 import React, {useState} from 'react';
 
-// const removeUser = async (e, updateState) => {
-//     e.preventDefault();
-//     const login = e.target.parentElement.attributes.login.value;
-//     const res = await fetch(`http://127.0.0.1:3102/admin/users/${login}`, {
-//         method: "DELETE",
-//         mode: "cors",
-//         credentials: "include"
-//     })
-//     const data = await res.text();
-//     updateState(data);
-// }
+
 Date.prototype.yyyymmdd = function() {
     var mm = this.getMonth() + 1; // getMonth() is zero-based
     var dd = this.getDate();
@@ -29,10 +19,7 @@ const User = ({data}) => {
   
     var dateformat = new Date(dateStr);
    dateformat=dateformat.yyyymmdd();
-    // console.log(dateformat.getUTCFullYear());
-    // console.log(dateformat.getMonth());
-    // console.log(dateformat.getDate());
- 
+   
     return(
       <div className={'user'} login={data.login}>
           <p className={'user--text'}>{`Name: ${data.name}`}</p>

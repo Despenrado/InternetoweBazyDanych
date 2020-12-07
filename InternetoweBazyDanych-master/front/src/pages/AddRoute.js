@@ -8,19 +8,7 @@ import Form from '../components/AddRouteForm';
 const validateForm = async (e, changeState) => {
         let errors = [];
         const form = document.forms['addRouteForm'];
-        // if(!form['firstName'].value.length)
-        //     errors.push({
-        //         message: 'First name field cannot be empty!',
-        //         success: false
-        //     });
-        // if(!form['lastName'].value.length)
-        //     errors.push({
-        //         message: 'Last name field cannot be empty!',
-        //         success: false
-        //     });
-        // if(errors.length)
-        //     changeState(errors);
-        // else {
+       
             const data = {}
             data.start = form['start'].value;
             data.end = form['end'].value;

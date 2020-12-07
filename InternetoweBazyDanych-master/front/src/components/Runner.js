@@ -19,7 +19,7 @@ const Runner = ({data}) => {
     var dateformat = new Date(dateStr);
    dateformat=dateformat.yyyymmdd();
     
- 
+    
     return(
       <div className={'user'} login={data.LOGIN_UZYTKOWNIK}>
          <p className={'user--text'}>{`Login: ${data.LOGIN_UZYTKOWNIK}`}</p>

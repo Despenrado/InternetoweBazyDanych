@@ -1,17 +1,7 @@
 import React, {useState} from 'react';
 import { submitForm } from './Fetch';
 
-// const removeUser = async (e, updateState) => {
-//     e.preventDefault();
-//     const login = e.target.parentElement.attributes.login.value;
-//     const res = await fetch(`http://127.0.0.1:3102/admin/users/${login}`, {
-//         method: "DELETE",
-//         mode: "cors",
-//         credentials: "include"
-//     })
-//     const data = await res.text();
-//     updateState(data);
-// }
+
 Date.prototype.yyyymmdd = function() {
     var mm = this.getMonth() + 1; // getMonth() is zero-based
     var dd = this.getDate();
@@ -33,6 +23,7 @@ const UserToFinish = ({data}) => {
     let date = data.date;
     var dateStr = data.date;  
     
+    console.log('gsdfgs')
   
     var dateformat = new Date(dateStr);
    dateformat=dateformat.yyyymmdd();

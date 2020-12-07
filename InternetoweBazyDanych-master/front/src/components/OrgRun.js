@@ -20,7 +20,7 @@ data.data_bieg = date[0];
   await submitForm(process.env.REACT_APP_UNSPLASH_URL+`/organizer/${Fromdata.ID_BIEG}/finish`, data);
 
 //Skasowanie biegu
-await deleteData(process.env.REACT_APP_UNSPLASH_URL+`/organizer/${Fromdata.ID_BIEG}/delete`);
+//await deleteData(process.env.REACT_APP_UNSPLASH_URL+`/organizer/${Fromdata.ID_BIEG}/delete`);
     
    
 }
@@ -39,13 +39,14 @@ const validateForm = async (e, changeState) => {
             success: false
         });
     if(errors.length)
-        changeState(errors);
+       // changeState(errors);
+       changeState(errors);
     else {
         const data = {}
         data.name = form['name'].value;
         data.route = form['route'].value;
-        data.date = '1998-11-18';
-        await updateUser(process.env.REACT_APP_UNSPLASH_URL+`/${id}/edit`, data, changeState);
+        data.date = form['date'].value;
+        await updateUser(process.env.REACT_APP_UNSPLASH_URL+`/organizer/${id}/edit`, data);
         form['name'].value = '';
         form['route'].value = '';
     }
@@ -95,12 +96,14 @@ const Run = ({data}) => {
                   }
                   {
                       (localStorage.getItem('type') === "organizator" && window.location.href === 'http://127.0.0.1:3000/organizer/runs' && (
-                              <button onClick={e => showForm(!visibility)}>{"Edytuj bieg"}</button>)
+                              <button onClick={e => showForm(!visibility)}>Edit Run</button>)
                       )
                   }
                   {
                       (localStorage.getItem('type') === "organizator" && window.location.href === 'http://127.0.0.1:3000/organizer/runs' && (
                          <a href={`/organizer/Finishrun/${data.ID_BIEG}`} onClick={e=>closeRun(e,data)}>Close run</a>))
+
+                    
                         
                   }
               </div>

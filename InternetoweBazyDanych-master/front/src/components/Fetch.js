@@ -7,6 +7,7 @@ const fetchData = async (updateData, url) => {
     });
     let data = await res.json();
     updateData(data);
+   console.log('fgdfgh')
 }
 
 const updateUser = async (url, body, updateData) => {

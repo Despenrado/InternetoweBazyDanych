@@ -4,16 +4,16 @@ import React, {useState, useEffect} from 'react';
 import {fetchData} from '../components/Fetch';
 
 const List = ({url, child}) => {
+  
     const [fetchedData, updateData] = useState([]);
     const Child = child;
-    
+ 
     useEffect(() => {
         fetchData(updateData, url);
     }, []);
-
+    console.log(fetchedData);
 if(Array.isArray(fetchedData)){
     return (
-        
         <ul className={"list"}>
             {
                 fetchedData.map((data, index) => {
